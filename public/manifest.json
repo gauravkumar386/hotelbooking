@@ -1,19 +1,55 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
+  "short_name": "Hotel Booking",
+  "name": "Hotel Booking App",
+  "description": "A simple hotel booking application",
+  "lang": "en-US",
+  "dir": "ltr",
+  "scope": "/",
+  "orientation": "portrait",
+  "display_override": [
+    "window-controls-overlay",
+    "minimal-ui"
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "categories": [
+    "travel",
+    "hotel",
+    "booking",
+    "reservation"
+  ],
+  "screenshots": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "screenshot1.png",
+      "type": "image/png",
+      "sizes": "1280x720",
+      "label": "Home Screen"
     },
     {
-      "src": "logo192.png",
+      "src": "screenshot2.png",
+      "type": "image/png",
+      "sizes": "1280x720",
+      "label": "Booking Details"
+    }
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "application/x-www-form-urlencoded",
+    "params": {
+      "title": "name",
+      "text": "description",
+      "url": "url"
+    }
+  },
+  "icons": [
+    {
+      "src": "icon-192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "icon-512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
