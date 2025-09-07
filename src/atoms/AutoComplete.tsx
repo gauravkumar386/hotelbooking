@@ -1,16 +1,18 @@
 import React from "react";
 import { AutoComplete } from "primereact/autocomplete";
-import SearchIcon from "@material-ui/icons/Search";
-import CancelIcon from "@material-ui/icons/Cancel";
-import "../styles/autoComplete.scss";
+import "../styles/AutoComplete.scss";
+import IconLabel from "./IconLabel";
 
 type Props = {
-  value: string;
-  suggestions: any[];
-  placeholder: string;
+  value?: string;
+  suggestions?: any[];
+  placeholder?: string;
   searchMethod?: any;
   setOnChange?: any;
   setLocationData?: any;
+  onMouseOverHandler?: () => void;
+  onMouseOutHandler?: () => void;
+  setInputValue?: (e: any) => void;
 };
 
 const AutoCompleteInput = (props: Props) => {
@@ -20,11 +22,17 @@ const AutoCompleteInput = (props: Props) => {
     placeholder,
     searchMethod,
     setOnChange,
-    setLocationData,
+    onMouseOverHandler,
+    onMouseOutHandler,
+    setInputValue
   } = props;
   return (
     <div className="input-element card flex justify-content-center">
-      <SearchIcon />
+      <IconLabel
+        classname="pi pi-search"
+        onMouseOverHandler={onMouseOverHandler}
+        onMouseOutHandler={onMouseOutHandler}
+      />
       <AutoComplete
         value={value}
         suggestions={suggestions}
@@ -33,11 +41,9 @@ const AutoCompleteInput = (props: Props) => {
         onChange={(e) => setOnChange(e.value)}
       />
       {value && (
-        <CancelIcon
-          onClick={() => {
-            setOnChange("");
-            setLocationData([]);
-          }}
+        <IconLabel
+          classname="pi pi-times"
+          // onClickHandler={() => setInputValue("")}
         />
       )}
     </div>

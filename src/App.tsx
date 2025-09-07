@@ -6,7 +6,7 @@ import HomePage from "./components/HomePage";
 function App() {
   const value: any = {
     appendTo: "self",
-    unstyled: true,
+    unstyled: false,
   };
   return (
     <PrimeReactProvider value={value}>
