@@ -8,93 +8,35 @@ import IconLabel from "../atoms/IconLabel";
 import CustomInput from "../atoms/CustomInput";
 import { useState } from "react";
 import AutoCompleteInput from "../atoms/AutoComplete";
+import { useNavigate } from "react-router-dom";
 
 const CustomHeader = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState<string>("");
+  const navigate = useNavigate();
   const items = [
     {
       label: "Hotels & Resorts",
       items: [
         [
           {
-            label: "Living Room",
+            label: "By Destination",
             items: [
-              { label: "Accessories" },
-              { label: "Armchair" },
-              { label: "Coffee Table" },
-              { label: "Couch" },
-              { label: "TV Stand" },
+              { label: "Beachfront Hotels" },
+              { label: "Mountain Retreats" },
+              { label: "City Escapes" },
+              { label: "Island Resorts" },
             ],
           },
         ],
         [
           {
-            label: "Kitchen",
+            label: "By Experience",
             items: [
-              { label: "Bar stool" },
-              { label: "Chair" },
-              { label: "Table" },
-            ],
-          },
-          {
-            label: "Bathroom",
-            items: [{ label: "Accessories" }],
-          },
-        ],
-      ],
-    },
-    {
-      label: "Electronics",
-      items: [
-        [
-          {
-            label: "Computer",
-            items: [
-              { label: "Monitor" },
-              { label: "Mouse" },
-              { label: "Notebook" },
-              { label: "Keyboard" },
-              { label: "Printer" },
-              { label: "Storage" },
-            ],
-          },
-        ],
-        [
-          {
-            label: "Home Theather",
-            items: [
-              { label: "Projector" },
-              { label: "Speakers" },
-              { label: "TVs" },
-            ],
-          },
-        ],
-      ],
-    },
-    {
-      label: "Suites & Villas",
-      items: [
-        [
-          {
-            label: "Computer",
-            items: [
-              { label: "Monitor" },
-              { label: "Mouse" },
-              { label: "Notebook" },
-              { label: "Keyboard" },
-              { label: "Printer" },
-              { label: "Storage" },
-            ],
-          },
-        ],
-        [
-          {
-            label: "Home Theather",
-            items: [
-              { label: "Projector" },
-              { label: "Speakers" },
-              { label: "TVs" },
+              { label: "Luxury Stays" },
+              { label: "Budget-Friendly" },
+              { label: "Boutique Hotels" },
+              { label: "Family-Friendly" },
             ],
           },
         ],
@@ -105,24 +47,47 @@ const CustomHeader = () => {
       items: [
         [
           {
-            label: "Computer",
+            label: "By Cuisine",
             items: [
-              { label: "Monitor" },
-              { label: "Mouse" },
-              { label: "Notebook" },
-              { label: "Keyboard" },
-              { label: "Printer" },
-              { label: "Storage" },
+              { label: "Fine Dining" },
+              { label: "Buffet & Brunch" },
+              { label: "Local Cuisine" },
+              { label: "International Menus" },
             ],
           },
         ],
         [
           {
-            label: "Home Theather",
+            label: "By Setting",
             items: [
-              { label: "Projector" },
-              { label: "Speakers" },
-              { label: "TVs" },
+              { label: "Rooftop Dining" },
+              { label: "Poolside Restaurants" },
+              { label: "Private Dining" },
+            ],
+          },
+        ],
+      ],
+    },
+    {
+      label: "Packages",
+      items: [
+        [
+          {
+            label: "Popular Packages",
+            items: [
+              { label: "Romantic Getaways" },
+              { label: "Family Vacations" },
+              { label: "Adventure Trips" },
+              { label: "Weekend Escapes" },
+            ],
+          },
+        ],
+        [
+          {
+            label: "Special Offers",
+            items: [
+              { label: "Early Bird Discounts" },
+              { label: "Last Minute Packages" },
             ],
           },
         ],
@@ -133,24 +98,46 @@ const CustomHeader = () => {
       items: [
         [
           {
-            label: "Computer",
+            label: "Current Deals",
             items: [
-              { label: "Monitor" },
-              { label: "Mouse" },
-              { label: "Notebook" },
-              { label: "Keyboard" },
-              { label: "Printer" },
-              { label: "Storage" },
+              { label: "Flash Sales" },
+              { label: "Limited Time Offers" },
+              { label: "Partner Discounts" },
             ],
           },
         ],
         [
           {
-            label: "Home Theather",
+            label: "Seasonal Specials",
             items: [
-              { label: "Projector" },
-              { label: "Speakers" },
-              { label: "TVs" },
+              { label: "Winter Getaways" },
+              { label: "Summer Escapes" },
+              { label: "Holiday Packages" },
+            ],
+          },
+        ],
+      ],
+    },
+    {
+      label: "Loyalty & Rewards",
+      items: [
+        [
+          {
+            label: "My Account",
+            items: [
+              { label: "Sign In / Register" },
+              { label: "View My Points" },
+              { label: "Redeem Rewards" },
+            ],
+          },
+        ],
+        [
+          {
+            label: "Program Benefits",
+            items: [
+              { label: "Member Discounts" },
+              { label: "Free Night Stays" },
+              { label: "Referral Bonuses" },
             ],
           },
         ],
@@ -161,24 +148,11 @@ const CustomHeader = () => {
       items: [
         [
           {
-            label: "Computer",
+            label: "Plan an Event",
             items: [
-              { label: "Monitor" },
-              { label: "Mouse" },
-              { label: "Notebook" },
-              { label: "Keyboard" },
-              { label: "Printer" },
-              { label: "Storage" },
-            ],
-          },
-        ],
-        [
-          {
-            label: "Home Theather",
-            items: [
-              { label: "Projector" },
-              { label: "Speakers" },
-              { label: "TVs" },
+              { label: "Weddings" },
+              { label: "Corporate Meetings" },
+              { label: "Private Parties" },
             ],
           },
         ],
@@ -192,6 +166,10 @@ const CustomHeader = () => {
 
   const onMouseOutHandler = () => {
     setIsVisible(false);
+  };
+
+  const onBookHandler = () => {
+    navigate("/booking");
   };
 
   console.log("logggggg", searchValue !== "", isVisible);
@@ -226,7 +204,7 @@ const CustomHeader = () => {
           <IconLabel label="Profile" classname="pi pi-user" />
           <IconLabel label="Login" classname="pi pi-sign-in" />
           <span>
-            <CustomButton label="Book" />
+            <CustomButton label="Book" onClick={onBookHandler} />
           </span>
         </div>
       </div>

@@ -83,6 +83,10 @@
       }
     }
 
+    .p-menuitem.p-highlight > .p-menuitem-content {
+      background: transparent;
+    }
+
     .p-menuitem-content {
       svg {
         display: none;

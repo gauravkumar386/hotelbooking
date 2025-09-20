@@ -1,7 +1,6 @@
 export const hotels = [
   {
     status: "success",
-    count: 15,
     hotels: [
       {
         hotel_name: "Villa Verona",

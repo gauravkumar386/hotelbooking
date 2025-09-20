@@ -2,6 +2,9 @@ import React from "react";
 import { PrimeReactProvider } from "primereact/api";
 import "./App.css";
 import HomePage from "./components/HomePage";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HotelSelection from "./components/HotelSelection";
+import CustomLayout from "./shared/CustomLayout";
 
 function App() {
   const value: any = {
@@ -10,9 +13,12 @@ function App() {
   };
   return (
     <PrimeReactProvider value={value}>
-      <div className="App">
-        <HomePage />
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/booking" element={<CustomLayout />} />
+        </Routes>
+      </BrowserRouter>
     </PrimeReactProvider>
   );
 }

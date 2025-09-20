@@ -1,8 +1,10 @@
-const initialState:InitialState={
+// const initialState:InitialState={
 
-}
+// }
 
-const reducer=(state:InitialState = initialState,action:ReduxAction)=>{
+const reducer=(
+    // state:InitialState = initialState,action:ReduxAction
+)=>{
 
 }
 
