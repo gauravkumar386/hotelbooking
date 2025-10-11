@@ -48,7 +48,7 @@ const CustomInput = (props: Props) => {
       />
       {value && (
         <IconLabel
-          classname="pi pi-times"
+          classname="pi-times"
           onClickHandler={() => setInputValue("")}
         />
       )}

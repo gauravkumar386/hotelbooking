@@ -5,6 +5,11 @@ import { Steps } from "primereact/steps";
 import HotelSelection from "../components/HotelSelection";
 import GuestRoomCount from "../molecules/GuestRoomCount";
 import DateSelection from "../molecules/DateSelection";
+import CustomTabList from "../atoms/CustomTabList";
+import CustomInput from "../atoms/CustomInput";
+import Counter from "../molecules/Counter";
+import CustomImage from "../atoms/CustomImage";
+import Logo from "../assets/images/logo.png";
 
 const CustomLayout = () => {
   const navigate = useNavigate();
@@ -22,14 +27,21 @@ const CustomLayout = () => {
       label: "Checkout",
     },
   ];
+  const setSelectedCity = () => {};
   const tablist = [
     {
       header: "Select Hotel",
-      component: <HotelSelection />,
+      component: (
+        <CustomInput
+          placeholder="Select Hotel"
+          setInputValue={setSelectedCity}
+          variant="filled"
+        />
+      ),
     },
     {
       header: "Select Rooms & Guests",
-      component: <GuestRoomCount />,
+      component: <Counter />,
     },
     {
       header: "Select Dates",
@@ -45,11 +57,15 @@ const CustomLayout = () => {
         <div className="pi pi-times close-btn" onClick={navigateToHome}>
           Exit
         </div>
-        <div className="logo">Villa Verona</div>
+        <div className="logo-image">
+          <CustomImage source={Logo} width="60" onClickHandler={navigateToHome}/>
+        </div>
         <div className="pi pi-user login-btn">Login</div>
       </div>
       <Steps readOnly model={items} />
-      <CustomTabView tabList={tablist} />
+      <div className="custom-layout-body">
+        <CustomTabList tabList={tablist} />
+      </div>
     </div>
   );
 };

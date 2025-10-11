@@ -1,4 +1,4 @@
-export const hotels = [
+export const hotelsDetails = [
   {
     status: "success",
     hotels: [

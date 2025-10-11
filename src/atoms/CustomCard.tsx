@@ -9,7 +9,7 @@ type Props = {
 
 const CustomCard: React.FC<Props> = ({ title, className, children }) => {
   return (
-    <Card title={title} className={className}>
+    <Card title={title} >
       {children}
     </Card>
   );

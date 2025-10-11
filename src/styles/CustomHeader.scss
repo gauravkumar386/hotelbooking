@@ -15,23 +15,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem 0 2rem;
-
-    .search-bar {
-      width: 33.333%;
-      text-align: left;
-
-      .pi-search {
-        position: absolute;
-        top: 2rem;
-      }
-    }
+    padding: 1rem 2rem 0;
 
     .logo-name {
       width: 33.333%;
-      text-align: center;
       font-family: "Courier New", Courier, monospace;
-      font-size: 45px;
+      font-size: 2.5rem;
     }
 
     .header-top-right {
@@ -43,7 +32,13 @@
       .pi:before {
         margin-bottom: 5px;
       }
+      .submit-button button{
+        font-size: 0.75rem;
+      }
     }
+  }
+  .p-divider.p-divider-horizontal{
+    margin: 0.5rem 0;
   }
 
   .p-divider.p-divider-horizontal::before {

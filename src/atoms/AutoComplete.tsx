@@ -4,9 +4,11 @@ import "../styles/AutoComplete.scss";
 import IconLabel from "./IconLabel";
 
 type Props = {
+  label?: string;
   value?: string;
   suggestions?: any[];
   placeholder?: string;
+  searchIcon?: boolean;
   searchMethod?: any;
   setOnChange?: any;
   setLocationData?: any;
@@ -17,32 +19,38 @@ type Props = {
 
 const AutoCompleteInput = (props: Props) => {
   const {
+    label,
     value,
     suggestions,
     placeholder,
+    searchIcon = false,
     searchMethod,
     setOnChange,
     onMouseOverHandler,
     onMouseOutHandler,
-    setInputValue
+    setInputValue,
   } = props;
   return (
-    <div className="input-element card flex justify-content-center">
-      <IconLabel
-        classname="pi pi-search"
-        onMouseOverHandler={onMouseOverHandler}
-        onMouseOutHandler={onMouseOutHandler}
-      />
+    <div className="autocomplete-element card flex justify-content-center">
+      {searchIcon && (
+        <IconLabel
+          classname="pi-search"
+          onMouseOverHandler={onMouseOverHandler}
+          onMouseOutHandler={onMouseOutHandler}
+        />
+      )}
+      {label && <div className="autocomplete-label">{label}</div>}
       <AutoComplete
         value={value}
         suggestions={suggestions}
         placeholder={placeholder}
         completeMethod={searchMethod}
         onChange={(e) => setOnChange(e.value)}
+        className="custom-autocomplete"
       />
       {value && (
         <IconLabel
-          classname="pi pi-times"
+          classname="pi-times"
           // onClickHandler={() => setInputValue("")}
         />
       )}

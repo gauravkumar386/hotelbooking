@@ -1,5 +1,5 @@
 .input-element {
-  position: relative;
+  // position: relative;
   .pi-times {
     position: absolute;
     top: 50%;
@@ -9,15 +9,15 @@
   .pi-times {
     right: 0.5rem;
   }
-  input {
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 0;
-    width: 100%;
-    color: #ffffff;
-    outline-style: none;
-    box-shadow: none;
-    padding: 0.5rem 3rem;
-  }
+  // input {
+  //   background-color: rgba(0, 0, 0, 0);
+  //   border: none;
+  //   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  //   border-radius: 0;
+  //   width: 100%;
+  //   color: #ffffff;
+  //   outline-style: none;
+  //   box-shadow: none;
+  //   padding: 0.5rem 3rem;
+  // }
 }

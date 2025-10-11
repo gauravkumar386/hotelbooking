@@ -1,0 +1,19 @@
+.card {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 600;
+  .label {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+  .p-dropdown {
+    min-width: 12rem;
+    .p-dropdown-label,
+    .p-dropdown-panel .p-dropdown-item-label {
+      div {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    }
+  }
+}
