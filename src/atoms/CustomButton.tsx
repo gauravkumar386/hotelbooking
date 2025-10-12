@@ -6,14 +6,24 @@ type Props = {
   disabled?: boolean;
   onClick?: any;
   icon?: string;
+  rounded?: boolean;
+  text?: boolean;
 };
 
 const CustomButton = (props: Props) => {
-  const { label, classname, disabled, onClick, icon } = props;
+  const { label, text, classname, disabled, onClick, icon, rounded=false } = props;
 
   return (
-    <div className={`submit-button ${classname}`}>
-      <Button icon={icon} label={label} onClick={onClick} disabled={disabled} />
+    <div className={`submit-button ${classname}`} style={{padding:"0 15px"}}>
+      <Button
+        icon={icon}
+        label={label}
+        text={text}
+        onClick={onClick}
+        disabled={disabled}
+        rounded={rounded}
+        style={{fontSize:"12px"}}
+      />
     </div>
   );
 };

@@ -1,9 +1,9 @@
-import { useMemo } from "react";
-import AutoCompleteInput from "../atoms/AutoComplete";
+import { useMemo, useState } from "react";
 import CustomDropdown from "../atoms/CustomDropdown";
 import { hotelsDetails } from "../shared/util/hotelDetails";
 import CustomDateRangeSelector from "../atoms/CustomDateRangeSelector";
 import CustomRoomsSelection from "../atoms/CustomRoomsSelection";
+import CustomButton from "../atoms/CustomButton";
 
 type Hotel = {
   hotelName: string;
@@ -29,11 +29,14 @@ const HotelSearchBar = () => {
         dropdownData={hotelList}
         selectDropdownHandler={dropdownHandler}
       />
-      <CustomDateRangeSelector
-        label="Check-in/Check-out"
-        classname="pi-calendar"
+      <CustomDateRangeSelector label="Check-in" classname="pi-calendar" />
+      <CustomDateRangeSelector label="Check-out" classname="pi-calendar" />
+      <CustomRoomsSelection
+        selectedNoOfRooms={1}
+        selectedNoOfGuests={2}
+        label="Rooms and Guests"
       />
-      <CustomRoomsSelection label="Rooms" />
+      <CustomButton label="Check Availability" rounded={true} classname="search-button"/>
     </div>
   );
 };

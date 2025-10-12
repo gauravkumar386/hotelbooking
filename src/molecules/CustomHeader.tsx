@@ -28,7 +28,6 @@ const CustomHeader = () => {
     navigate("/booking");
   };
 
-  console.log("logggggg", searchValue !== "", isVisible);
   return (
     <div className="header-component">
       <div className="header-top">

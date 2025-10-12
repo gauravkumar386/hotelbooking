@@ -1,0 +1,23 @@
+@import "primereact/resources/themes/lara-light-cyan/theme.css";
+/* @import "primereact/resources/themes/bootstrap4-dark-blue/theme.css"; */
+@import "primeicons/primeicons.css";
+
+$mobileView: "430px";
+$tabletView: "768px";
+
+// In _mixins.scss
+@mixin pageWidth($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: $mobileView) {
+      @content;
+    }
+  } @else if $breakpoint == tablet {
+    @media (max-width: $tabletView) {
+      @content;
+    }
+  }
+}
+
+.p-overlaypanel {
+  z-index: 9999 !important;
+}

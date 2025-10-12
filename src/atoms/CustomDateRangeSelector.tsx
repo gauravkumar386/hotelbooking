@@ -13,8 +13,8 @@ const CustomDateRangeSelector = (props: Props) => {
   const { label, classname } = props;
   const [dates, setDates] = useState<DateRange>(null);
 
-  return (
-    <div className="card flex justify-content-center">
+  return ( 
+    <div className="card flex justify-content-center" style={{minWidth:"10rem"}}>
       <div className="label">{label}</div>
       <div style={{ display: "flex", alignItems: "center" }}>
         <IconLabel classname={classname} />

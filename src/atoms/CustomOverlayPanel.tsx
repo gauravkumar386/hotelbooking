@@ -1,20 +1,62 @@
-import { OverlayPanel } from "primereact/overlaypanel";
-import { ReactNode, useRef } from "react";
+import {
+  forwardRef,
+  ReactNode,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
+import CustomCard from "./CustomCard";
+import "../styles/OverlayPanel.scss";
 
 type Props = {
   children: ReactNode;
   selectedViewChildren: ReactNode;
 };
 
-const CustomOverlayPanel = (props: Props) => {
+export type ChildRef = {
+  childMethod: () => void;
+};
+
+const CustomOverlayPanel = forwardRef((props: Props, ref) => {
   const { children, selectedViewChildren } = props;
-  const op = useRef<OverlayPanel | null>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+
+  const handleClick = () => {
+    setIsOverlayOpen((prev) => !prev);
+  };
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      overlayRef.current &&
+      !overlayRef.current.contains(event.target as Node)
+    ) {
+      setIsOverlayOpen(false);
+    }
+  };
+
+  const childMethod = () => {
+    handleClick();
+  };
+  useImperativeHandle(ref, () => ({
+    childMethod,
+  }));
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   return (
     <>
-      <div onClick={(e) => op.current?.toggle(e)}>{selectedViewChildren}</div>
-      <OverlayPanel ref={op}>{children}</OverlayPanel>
+      <div ref={overlayRef}>
+        <div onClick={handleClick}>{selectedViewChildren}</div>
+        {isOverlayOpen && (
+          <CustomCard className="custom-card">{children}</CustomCard>
+        )}
+      </div>
     </>
   );
-};
+});
 
 export default CustomOverlayPanel;

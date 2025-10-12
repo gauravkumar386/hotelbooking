@@ -7,9 +7,9 @@ import GuestRoomCount from "../molecules/GuestRoomCount";
 import DateSelection from "../molecules/DateSelection";
 import CustomTabList from "../atoms/CustomTabList";
 import CustomInput from "../atoms/CustomInput";
-import Counter from "../molecules/Counter";
 import CustomImage from "../atoms/CustomImage";
 import Logo from "../assets/images/logo.png";
+import CustomCounter from "../molecules/CustomCounter";
 
 const CustomLayout = () => {
   const navigate = useNavigate();
@@ -41,7 +41,7 @@ const CustomLayout = () => {
     },
     {
       header: "Select Rooms & Guests",
-      component: <Counter />,
+      component: <></>,
     },
     {
       header: "Select Dates",
