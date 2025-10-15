@@ -1,18 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CustomButton from "../atoms/CustomButton";
 import "../styles/CustomCounter.scss";
-import { Button } from "primereact/button";
 
 type Props = {
-  onIncrement?: () => void;
-  onDecrement?: () => void;
+  setCountHandler: (count: number) => void;
+  minCount: number;
   defaultCount: number;
 };
 
 const CustomCounter = (props: Props) => {
-  const { defaultCount, onIncrement, onDecrement } = props;
+  const { defaultCount, minCount, setCountHandler } = props;
   const [count, setCount] = useState(defaultCount);
-  console.log("countttt", count);
+  const decrementCount = () => {
+    if (count > minCount) {
+      setCount(count - 1);
+    }
+  };
+  useEffect(() => {
+    setCountHandler(count);
+  }, [count, setCountHandler]);
   return (
     <div className="counter-element">
       <CustomButton
@@ -26,7 +32,7 @@ const CustomCounter = (props: Props) => {
       <CustomButton
         label=""
         rounded={true}
-        onClick={() => setCount(count - 1)}
+        onClick={decrementCount}
         icon="pi pi-minus"
         classname="counter-btn"
       />

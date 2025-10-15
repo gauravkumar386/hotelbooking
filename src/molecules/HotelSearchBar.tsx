@@ -4,6 +4,7 @@ import { hotelsDetails } from "../shared/util/hotelDetails";
 import CustomDateRangeSelector from "../atoms/CustomDateRangeSelector";
 import CustomRoomsSelection from "../atoms/CustomRoomsSelection";
 import CustomButton from "../atoms/CustomButton";
+import CustomCalendar from "../atoms/Calendar";
 
 type Hotel = {
   hotelName: string;
@@ -20,6 +21,9 @@ const HotelSearchBar = () => {
     });
   }, []);
   const dropdownHandler = () => {};
+  const now = new Date();
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
   return (
     <div className="hotel-search-bar">
       <CustomDropdown
@@ -29,14 +33,18 @@ const HotelSearchBar = () => {
         dropdownData={hotelList}
         selectDropdownHandler={dropdownHandler}
       />
-      <CustomDateRangeSelector label="Check-in" classname="pi-calendar" />
-      <CustomDateRangeSelector label="Check-out" classname="pi-calendar" />
-      <CustomRoomsSelection
-        selectedNoOfRooms={1}
-        selectedNoOfGuests={2}
-        label="Rooms and Guests"
+      <CustomCalendar label="Check-in" classname="pi-calendar" minDate={now} />
+      <CustomCalendar
+        label="Check-out"
+        classname="pi-calendar"
+        minDate={tomorrow}
       />
-      <CustomButton label="Check Availability" rounded={true} classname="search-button"/>
+      <CustomRoomsSelection label="Rooms and Guests" />
+      <CustomButton
+        label="Check Availability"
+        rounded={true}
+        classname="search-button"
+      />
     </div>
   );
 };

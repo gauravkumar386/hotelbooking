@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import CustomCounter from "../molecules/CustomCounter";
 import CustomButton from "./CustomButton";
 import CustomOverlayPanel, { ChildRef } from "./CustomOverlayPanel";
@@ -6,16 +6,25 @@ import IconLabel from "./IconLabel";
 
 type Props = {
   label: string;
-  selectedNoOfRooms: number;
-  selectedNoOfGuests: number;
 };
 
 const CustomRoomsGuestsSelection = (props: Props) => {
-  const { label, selectedNoOfRooms = 1, selectedNoOfGuests = 2 } = props;
+  const { label } = props;
+  const [roomCount, setRoomCount] = useState<number>(1);
+  const [guestCount, setGuestCount] = useState<number>(2);
   const childRef = useRef<ChildRef>(null);
   const handleCallChild = () => {
     childRef.current?.childMethod();
   };
+  const setRoomCountHandler = (count: number) => {
+    console.log("room-count", count);
+    setRoomCount(count);
+  };
+  const setGuestCountHandler = (count: number) => {
+    console.log("guest-count", count);
+    setGuestCount(count);
+  };
+  // console.log("counttttt",roomCount,guestCount)
   return (
     <div
       className="card flex"
@@ -36,18 +45,18 @@ const CustomRoomsGuestsSelection = (props: Props) => {
             <IconLabel fontSize={20} classname="pi-building" />
             <div style={{ fontSize: "18px", opacity: "0.6" }}>
               <span style={{ fontSize: "25px" }}>
-                {selectedNoOfRooms < 10 ? "0" : ""}
-                {selectedNoOfRooms}
+                {roomCount < 10 ? "0" : ""}
+                {roomCount}
               </span>
               Room
-              {`${selectedNoOfRooms > 1 ? "s" : ""}`}
+              {`${roomCount > 1 ? "s" : ""}`}
               &nbsp;
               <span style={{ fontSize: "25px" }}>
-                {selectedNoOfGuests < 10 ? "0" : ""}
-                {selectedNoOfGuests}
+                {guestCount < 10 ? "0" : ""}
+                {guestCount}
               </span>
               Guest
-              {`${selectedNoOfGuests > 1 ? "s" : ""}`}
+              {`${guestCount > 1 ? "s" : ""}`}
             </div>
             <IconLabel fontSize={20} classname="pi-angle-down" />
           </div>
@@ -56,11 +65,19 @@ const CustomRoomsGuestsSelection = (props: Props) => {
       >
         <div className="room-count">
           <div>No. of Rooms</div>
-          <CustomCounter defaultCount={2} />
+          <CustomCounter
+            minCount={1}
+            defaultCount={roomCount}
+            setCountHandler={setRoomCountHandler}
+          />
         </div>
         <div className="guest-count">
           <div>No. of Guests</div>
-          <CustomCounter defaultCount={2} />
+          <CustomCounter
+            minCount={2}
+            defaultCount={guestCount}
+            setCountHandler={setGuestCountHandler}
+          />
         </div>
         <CustomButton
           label="Apply"
