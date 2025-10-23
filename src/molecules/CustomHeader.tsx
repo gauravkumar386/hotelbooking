@@ -38,9 +38,6 @@ const CustomHeader = () => {
         <div className="header-top-right">
           <IconLabel label="Profile" classname="pi-user" />
           <IconLabel label="Login" classname="pi-sign-in" />
-          <span>
-            <CustomButton label="Book" onClick={onBookHandler} />
-          </span>
         </div>
       </div>
       <CustomDivider />
