@@ -1,36 +1,39 @@
 import { Formik } from "formik";
 import { useState } from "react";
+import CustomInput from "../atoms/CustomInput";
+import CustomButton from "../atoms/CustomButton";
+import CustomOverlayPanel from "../atoms/CustomOverlayPanel";
 
-type loginForm = {
+type LoginForm = {
   userEmail: string;
   userPassword: string;
 };
 
 const Login = () => {
-  const [loginDetails, setLoginDetails] = useState<loginForm>({
+  const [loginDetails, setLoginDetails] = useState<LoginForm>({
     userEmail: "",
     userPassword: "",
   });
 
-  const setLoginHandler = () => {};
   return (
     <Formik
       initialValues={{ userEmail: "", userPassword: "" }}
       validate={(values) => {
-        const errors: loginForm = {
-          userEmail: "",
-          userPassword: "",
-        };
+        const errors: Partial<LoginForm> = {};
         if (!values.userEmail) {
-          errors.userEmail = "Email address is Required";
+          errors.userEmail = "Email address is required";
         } else if (
           !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.userEmail)
         ) {
           errors.userEmail = "Invalid email address";
         }
+        if (!values.userPassword) {
+          errors.userPassword = "Password is required";
+        }
         return errors;
       }}
       onSubmit={(values, { setSubmitting }) => {
+        setSubmitting(true);
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
           setSubmitting(false);
@@ -47,25 +50,29 @@ const Login = () => {
         isSubmitting,
       }) => (
         <form onSubmit={handleSubmit}>
-          <input
+          <CustomInput
+            name="userEmail"
             type="email"
-            name="email"
-            onChange={handleChange}
-            onBlur={handleBlur}
+            placeholder="Enter your email"
+            setInputValue={handleChange}
             value={values.userEmail}
-          />
-          {errors.userEmail && touched.userEmail && errors.userEmail}
-          <input
-            type="password"
-            name="password"
-            onChange={handleChange}
             onBlur={handleBlur}
-            value={values.userPassword}
           />
-          {errors.userPassword && touched.userPassword && errors.userPassword}
-          <button type="submit" disabled={isSubmitting}>
-            Submit
-          </button>
+          {errors.userEmail && touched.userEmail && (
+            <div style={{ color: "red" }}>{errors.userEmail}</div>
+          )}
+          <CustomInput
+            name="userPassword"
+            type="password"
+            placeholder="Enter your password"
+            setInputValue={handleChange}
+            value={values.userPassword}
+            onBlur={handleBlur}
+          />
+          {errors.userPassword && touched.userPassword && (
+            <div style={{ color: "red" }}>{errors.userPassword}</div>
+          )}
+          <CustomButton disabled={isSubmitting} label="Submit" />
         </form>
       )}
     </Formik>

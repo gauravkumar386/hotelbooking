@@ -5,26 +5,25 @@
     justify-content: space-between;
     font-family: "Courier New", Courier, monospace;
     align-items: center;
-    font-size: 45px;
-    padding: 1rem 2rem 0;
+    padding: 0.5rem 2rem;
     background: #e1d89f;
     .close-btn {
-      font-size: 18px;
+      font-size: 1.3rem;
       cursor: pointer;
     }
     .close-btn::before {
-      font-size: 16px;
+      font-size: 1rem;
       margin-right: 5px;
     }
     .logo-image {
       cursor: pointer;
     }
     .login-btn {
-      font-size: 18px;
+      font-size: 1.3rem;
       cursor: pointer;
     }
     .login-btn::before {
-      font-size: 18px;
+      font-size: 1rem;
       margin-right: 10px;
     }
   }

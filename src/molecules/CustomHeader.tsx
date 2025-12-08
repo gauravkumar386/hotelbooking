@@ -3,11 +3,8 @@ import CustomMenu from "../atoms/CustomMenu";
 import Logo from "../assets/images/logo.png";
 import "../styles/CustomHeader.scss";
 import CustomDivider from "../atoms/Divider";
-import CustomButton from "../atoms/CustomButton";
 import IconLabel from "../atoms/IconLabel";
-import CustomInput from "../atoms/CustomInput";
 import { useState } from "react";
-import AutoCompleteInput from "../atoms/AutoComplete";
 import { useNavigate } from "react-router-dom";
 import { items } from "../shared/util/headerOptions";
 
@@ -28,6 +25,10 @@ const CustomHeader = () => {
     navigate("/booking");
   };
 
+  const profileClickHandler = () => {
+    navigate("/profile");
+  };
+
   return (
     <div className="header-component">
       <div className="header-top">
@@ -36,7 +37,11 @@ const CustomHeader = () => {
           <CustomImage source={Logo} width="60" />
         </div>
         <div className="header-top-right">
-          <IconLabel label="Profile" classname="pi-user" />
+          <IconLabel
+            label="Profile"
+            classname="pi-user"
+            onClickHandler={profileClickHandler}
+          />
           <IconLabel label="Login" classname="pi-sign-in" />
         </div>
       </div>

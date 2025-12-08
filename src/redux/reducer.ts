@@ -1,11 +1,8 @@
-// const initialState:InitialState={
+// filepath: /c:/Users/gaura/OneDrive/Documents/hotel-booking/src/redux/reducers/index.ts
+import { combineReducers } from "@reduxjs/toolkit";
 
-// }
+const rootReducer = combineReducers({
+  // Add your reducers here
+});
 
-const reducer=(
-    // state:InitialState = initialState,action:ReduxAction
-)=>{
-
-}
-
-export default reducer;
+export default rootReducer;

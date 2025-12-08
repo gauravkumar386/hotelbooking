@@ -1,9 +1,7 @@
-type InitialState={
+type InitialState = {
+  isUserLoggedIn: boolean;
+};
 
-}
+type ReduxAction = {};
 
-type ReduxAction ={
-    
-}
-
-export{}
+export {};

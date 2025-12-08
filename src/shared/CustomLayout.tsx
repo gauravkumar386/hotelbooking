@@ -1,53 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import CustomTabView from "../atoms/CustomTabView";
-import "../styles/Layout.scss";
-import { Steps } from "primereact/steps";
-import HotelSelection from "../components/HotelSelection";
-import GuestRoomCount from "../molecules/GuestRoomCount";
-import DateSelection from "../molecules/DateSelection";
-import CustomTabList from "../atoms/CustomTabList";
-import CustomInput from "../atoms/CustomInput";
 import CustomImage from "../atoms/CustomImage";
 import Logo from "../assets/images/logo.png";
-import CustomCounter from "../molecules/CustomCounter";
+import FooterDetails from "../molecules/CustomFooter";
+import "../styles/Layout.scss";
 
-const CustomLayout = () => {
+type Props = {
+  children: React.ReactNode;
+};
+
+const CustomLayout = (props: Props) => {
+  const { children } = props;
   const navigate = useNavigate();
-  const items = [
-    {
-      label: "Destination",
-    },
-    {
-      label: "Rooms Selection",
-    },
-    {
-      label: "Special Requests",
-    },
-    {
-      label: "Checkout",
-    },
-  ];
-  const setSelectedCity = () => {};
-  const tablist = [
-    {
-      header: "Select Hotel",
-      component: (
-        <CustomInput
-          placeholder="Select Hotel"
-          setInputValue={setSelectedCity}
-          variant="filled"
-        />
-      ),
-    },
-    {
-      header: "Select Rooms & Guests",
-      component: <></>,
-    },
-    {
-      header: "Select Dates",
-      component: <DateSelection />,
-    },
-  ];
   const navigateToHome = () => {
     navigate("/");
   };
@@ -58,14 +21,16 @@ const CustomLayout = () => {
           Exit
         </div>
         <div className="logo-image">
-          <CustomImage source={Logo} width="60" onClickHandler={navigateToHome}/>
+          <CustomImage
+            source={Logo}
+            width="60"
+            onClickHandler={navigateToHome}
+          />
         </div>
         <div className="pi pi-user login-btn">Login</div>
       </div>
-      <Steps readOnly model={items} />
-      <div className="custom-layout-body">
-        <CustomTabList tabList={tablist} />
-      </div>
+      {children}
+      <FooterDetails />
     </div>
   );
 };

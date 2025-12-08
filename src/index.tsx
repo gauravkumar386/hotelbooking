@@ -1,24 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { applyMiddleware, createStore, Store } from 'redux';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import reducer from './redux/reducer';
-import { Provider } from 'react-redux';
-
-// const store:Store<InitialState, ReduxAction> & {
-//   dispatch: DispatchType
-// } = createStore(reducer)
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import Login from "./molecules/Login";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    {/* <Provider store={store}> */}
-      <App />
-    {/* </Provider> */}
+    <App />
+    {/* <Login /> */}
   </React.StrictMode>
 );
 

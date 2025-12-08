@@ -1,1 +1,1 @@
-export const DUMMY_VALUE=""
+export const IS_USER_LOGGED_IN="IS_USER_LOGGED_IN"

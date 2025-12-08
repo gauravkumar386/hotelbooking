@@ -11,7 +11,7 @@ import "../styles/OverlayPanel.scss";
 
 type Props = {
   children: ReactNode;
-  selectedViewChildren: ReactNode;
+  selectedViewChildren?: ReactNode;
 };
 
 export type ChildRef = {
@@ -48,14 +48,19 @@ const CustomOverlayPanel = forwardRef((props: Props, ref) => {
     };
   }, []);
   return (
-    <>
-      <div ref={overlayRef}>
-        <div onClick={handleClick}>{selectedViewChildren}</div>
-        {isOverlayOpen && (
-          <CustomCard className="custom-card">{children}</CustomCard>
-        )}
+    <div ref={overlayRef} className="overlay-panel">
+      <div
+        onClick={handleClick}
+        role="button"
+        aria-expanded={isOverlayOpen}
+        className="overlay-trigger"
+      >
+        {selectedViewChildren}
       </div>
-    </>
+      {isOverlayOpen && (
+        <CustomCard className="custom-card">{children}</CustomCard>
+      )}
+    </div>
   );
 });
 

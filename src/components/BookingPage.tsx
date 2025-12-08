@@ -1,5 +1,7 @@
+import CustomLayout from "../shared/CustomLayout";
+
 const BookingPage = () => {
-  return <>Booking Page</>;
+  return <CustomLayout>Booking Page</CustomLayout>;
 };
 
 export default BookingPage;

@@ -5,6 +5,7 @@ import CustomDateRangeSelector from "../atoms/CustomDateRangeSelector";
 import CustomRoomsSelection from "../atoms/CustomRoomsSelection";
 import CustomButton from "../atoms/CustomButton";
 import CustomCalendar from "../atoms/Calendar";
+import { useNavigate } from "react-router-dom";
 
 type Hotel = {
   hotelName: string;
@@ -12,6 +13,7 @@ type Hotel = {
 };
 
 const HotelSearchBar = () => {
+  const navigate = useNavigate();
   const hotelList = useMemo(() => {
     return hotelsDetails[0].hotels.map((hotel: any, index: number) => {
       return {
@@ -24,6 +26,9 @@ const HotelSearchBar = () => {
   const now = new Date();
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
+  const bookingHandler = () => {
+    navigate("/booking");
+  };
   return (
     <div className="hotel-search-bar">
       <CustomDropdown
@@ -44,6 +49,7 @@ const HotelSearchBar = () => {
         label="Check Availability"
         rounded={true}
         classname="search-button"
+        onClick={bookingHandler}
       />
     </div>
   );
