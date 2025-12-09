@@ -6,7 +6,9 @@ import Profile from "./components/Profile";
 import { Provider } from "react-redux";
 import store from "./redux/store"; // Import your Redux store
 import "./App.scss";
-import Login from "./molecules/Login";
+import HotelDetails from "./components/HotelDetails";
+import HotelsList from "./components/HotelsList";
+import HotelDining from "./components/HotelDining";
 
 function App() {
   const value: any = {
@@ -22,7 +24,9 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/booking" element={<BookingPage />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/hotels" element={<HotelsList />} />
+            <Route path="/hotels/:name" element={<HotelDetails />} />
+            <Route path="/dinings" element={<HotelDining />} />
           </Routes>
         </BrowserRouter>
       </PrimeReactProvider>
