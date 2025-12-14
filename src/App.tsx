@@ -9,6 +9,7 @@ import "./App.scss";
 import HotelDetails from "./components/HotelDetails";
 import HotelsList from "./components/HotelsList";
 import HotelDining from "./components/HotelDining";
+import Register from "./components/Register";
 
 function App() {
   const value: any = {
@@ -27,6 +28,7 @@ function App() {
             <Route path="/hotels" element={<HotelsList />} />
             <Route path="/hotels/:name" element={<HotelDetails />} />
             <Route path="/dinings" element={<HotelDining />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </BrowserRouter>
       </PrimeReactProvider>

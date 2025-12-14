@@ -14,7 +14,7 @@ const CustomButton = (props: Props) => {
   const { label, text, classname, disabled, onClick, icon, rounded=false } = props;
 
   return (
-    <div className={`submit-button ${classname}`} style={{padding:"0 15px"}}>
+    <div className={`submit-button ${classname}`}>
       <Button
         icon={icon}
         label={label}

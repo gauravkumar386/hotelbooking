@@ -1,5 +1,6 @@
 type Props = {
   key?: number;
+  fontColor?: string;
   label?: string;
   classname: string;
   fontSize?: number;
@@ -11,6 +12,7 @@ type Props = {
 const IconLabel = (props: Props) => {
   const {
     key,
+    fontColor,
     label,
     classname,
     onMouseOverHandler,
@@ -26,6 +28,7 @@ const IconLabel = (props: Props) => {
         flexDirection: "column",
         fontSize: `{${fontSize} px}`,
         cursor: "pointer",
+        color: `${fontColor}`,
       }}
       tabIndex={0}
       onMouseOver={onMouseOverHandler}

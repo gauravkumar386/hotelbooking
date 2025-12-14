@@ -7,7 +7,7 @@ import IconLabel from "../atoms/IconLabel";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { items } from "../shared/util/headerOptions";
-import Login from "./Login";
+import Login from "../components/Login";
 
 const CustomHeader = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);

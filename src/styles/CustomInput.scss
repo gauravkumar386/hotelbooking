@@ -1,23 +1,25 @@
 .input-element {
-  // position: relative;
+  input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #000;
+    border-radius: 0;
+    box-sizing: border-box;
+    outline: none;
+    background-color: transparent;
+    padding: 12px 0;
+    &:focus {
+      box-shadow: none;
+    }
+  }
   .pi-times {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-  }
-
-  .pi-times {
     right: 0.5rem;
+    transform: translateY(-50%);
+    cursor: pointer;
   }
-  // input {
-  //   background-color: rgba(0, 0, 0, 0);
-  //   border: none;
-  //   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  //   border-radius: 0;
-  //   width: 100%;
-  //   color: #ffffff;
-  //   outline-style: none;
-  //   box-shadow: none;
-  //   padding: 0.5rem 3rem;
-  // }
+  label {
+    left: 0;
+  }
 }

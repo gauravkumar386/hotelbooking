@@ -6,31 +6,54 @@
   width: 500px;
   padding: 20px;
   background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.1), /* Light black gradient */
-    rgba(0, 0, 0, 0.2)
-  ),
-  #fffce5;
+      to bottom,
+      rgba(0, 0, 0, 0.1),
+      /* Light black gradient */ rgba(0, 0, 0, 0.2)
+    ),
+    #fffce5;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   height: 100vh;
   overflow-y: auto;
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
+  .custom-icon {
+    font-size: 22px;
+    color: black;
+    float: right;
   }
-  form {
-    text-align: center;
+  .form-content {
+    padding: 2rem;
+    h2 {
+      text-align: center;
+      margin: 0 auto;
+      color: black;
+      font-weight: 400;
+      margin: 2rem 0 4rem;
+    }
+    form {
+      text-align: center;
+      color: #000;
+      .input-group {
+        margin-bottom: 2.5rem;
+        .error-message {
+          color: red;
+          text-align: left;
+        }
+      }
+      .forgot-pwd {
+        float: left;
+        font-weight: 500;
+        cursor: pointer;
+      }
+      .custom-btn-group {
+        margin-top: 7.5rem;
+        button {
+          width: 100%;
+          margin-bottom: 2.5rem;
+          border-radius: 0;
+          min-height: 3.5rem;
+          text-transform: uppercase;
+        }
+      }
+    }
   }
-}
-
-.error-message {
-  color: red;
-  font-size: 12px;
-  margin-top: 5px;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
 }

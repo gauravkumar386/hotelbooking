@@ -1,6 +1,7 @@
 import { InputText } from "primereact/inputtext";
 import IconLabel from "./IconLabel";
 import "../styles/CustomInput.scss";
+import { FloatLabel } from "primereact/floatlabel";
 
 type Props = {
   value?: string;
@@ -11,12 +12,10 @@ type Props = {
   placeholder?: string;
   className?: string;
   disabled?: boolean;
-  onChange?: any;
   setFieldValue?: any;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
-  onMouseOverHandler?: () => void;
-  onMouseOutHandler?: () => void;
-  setInputValue: (value: string) => void;
+  onClear?: () => void;
 };
 
 const CustomInput = (props: Props) => {
@@ -29,38 +28,31 @@ const CustomInput = (props: Props) => {
     placeholder = "",
     className = "",
     disabled = false,
+    onChange,
     onBlur,
-    onMouseOverHandler,
-    onMouseOutHandler,
-    setInputValue,
+    onClear,
   } = props;
 
-  const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  };
   return (
     <div className="input-element">
       {label && <label htmlFor={name}>{label}</label>}
-      <InputText
-        id={name}
-        value={value}
-        name={name}
-        type={type}
-        variant={variant}
-        className={className}
-        disabled={disabled}
-        placeholder={placeholder}
-        onBlur={onBlur}
-        onChange={(e) => inputHandler(e)}
-        onMouseOver={onMouseOverHandler}
-        onMouseOut={onMouseOutHandler}
-      />
-      {value && (
-        <IconLabel
-          classname="pi-times"
-          onClickHandler={() => setInputValue("")}
+      <FloatLabel>
+        <InputText
+          id={name}
+          value={value}
+          name={name}
+          type={type}
+          variant={variant}
+          className={className}
+          disabled={disabled}
+          onBlur={onBlur}
+          onChange={onChange}
         />
-      )}
+        {value && onClear && (
+          <IconLabel classname="pi-times" onClickHandler={onClear} />
+        )}
+        <label htmlFor={name}>{placeholder}</label>
+      </FloatLabel>
     </div>
   );
 };
