@@ -1,0 +1,50 @@
+.form-overlay {
+  &.register-page {
+    position: relative;
+    transform: none;
+    width: 50%;
+    margin: 2rem auto;
+    background: #f5efc8;
+    overflow-y: hidden;
+    height: auto;
+    .form-content {
+      padding: 0 5rem;
+      h2 {
+        font-size: 1.8rem;
+      }
+      .input-group {
+        .custom-dropdown {
+          width: 100%;
+          background: transparent;
+          border-radius: 0;
+          border: none;
+          border-bottom: 1px solid;
+          text-align: left;
+          .p-dropdown-items-wrapper {
+            background: #fffce5;
+            gap: 0;
+          }
+          .p-dropdown-label {
+            padding: 12px 0;
+          }
+        }
+        .custom-dropdown:focus,
+        .custom-dropdown:hover {
+          border: none;
+          border-bottom: 1px solid;
+          box-shadow: none;
+        }
+        &.custom-phone-group {
+          display: flex;
+          gap: 1rem;
+          .custom-group {
+            width: 100%;
+          }
+        }
+      }
+      .custom-btn-group {
+        margin-top: 5rem;
+      }
+    }
+  }
+}

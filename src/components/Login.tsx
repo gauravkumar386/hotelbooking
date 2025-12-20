@@ -2,10 +2,10 @@ import { Formik } from "formik";
 import { useEffect, useRef, useState } from "react";
 import CustomInput from "../atoms/CustomInput";
 import CustomButton from "../atoms/CustomButton";
-import "../styles/Login.scss";
 import IconLabel from "../atoms/IconLabel";
 import { useNavigate } from "react-router-dom";
 import ReCaptcha from "../molecules/ReCaptcha";
+import "../styles/Login.scss";
 
 type LoginForm = {
   userEmail: string;
@@ -43,7 +43,7 @@ const Login = ({ onClose }: { onClose: () => void }) => {
   };
 
   return (
-    <div className="login-overlay" ref={overlayRef}>
+    <div className="form-overlay" ref={overlayRef}>
       <IconLabel classname="pi-times custom-icon" onClickHandler={onClose} />
       <div className="form-content">
         <h2>Login into your Verona Membership Account</h2>

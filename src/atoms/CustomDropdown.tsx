@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Dropdown } from "primereact/dropdown";
 import { ChevronDownIcon } from "primereact/icons/chevrondown";
 import { ChevronRightIcon } from "primereact/icons/chevronright";
@@ -10,22 +9,27 @@ type SelectedValue = {
   selectedValueCode: string;
 };
 type Props = {
-  label: string;
+  label?: string;
   dropdownData: SelectedValue[];
-  selectDropdownHandler: () => void;
-  selectedOptionIconName: string;
-  listOptionIconName: string;
+  value: SelectedValue | null;
+  onChange: (value: SelectedValue | null) => void;
+  selectedOptionIconName?: string;
+  listOptionIconName?: string;
+  customClassname?: string;
+  placeholder?: string;
 };
 
 const CustomDropdown = (props: Props) => {
   const {
     label,
     dropdownData,
-    selectDropdownHandler,
-    selectedOptionIconName,
-    listOptionIconName,
+    value,
+    onChange,
+    selectedOptionIconName = "",
+    listOptionIconName = "",
+    customClassname,
+    placeholder,
   } = props;
-  const [selectedValue, setSelectedValue] = useState<SelectedValue>();
 
   const selectedValueTemplate = (option: SelectedValue, props: any) => {
     if (option) {
@@ -51,16 +55,16 @@ const CustomDropdown = (props: Props) => {
 
   return (
     <div className="card flex justify-content-center">
-      <div className="label">{label}</div>
+      {label && <div className="label">{label}</div>}
       <Dropdown
-        value={selectedValue}
-        onChange={(e) => setSelectedValue(e.value)}
+        value={value}
+        onChange={(e) => onChange(e.value)}
         options={dropdownData}
-        optionLabel="name"
-        placeholder={dropdownData[0].selectedValueName}
+        optionLabel="selectedValueName"
+        placeholder={placeholder}
         valueTemplate={selectedValueTemplate}
         itemTemplate={dropdownOptionTemplate}
-        className="w-full md:w-14rem"
+        className={`w-full md:w-14rem ${customClassname}`}
         dropdownIcon={(opts: any) => {
           return opts.iconProps["data-pr-overlay-visible"] ? (
             <ChevronRightIcon />
