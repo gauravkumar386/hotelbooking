@@ -2,14 +2,16 @@ import { useNavigate } from "react-router-dom";
 import CustomImage from "../atoms/CustomImage";
 import Logo from "../assets/images/logo.png";
 import FooterDetails from "../molecules/CustomFooter";
+import HotelSearchBar from "../molecules/HotelSearchBar";
 import "../styles/Layout.scss";
 
 type Props = {
+  isSearchBarRequired?: boolean;
   children: React.ReactNode;
 };
 
 const CustomLayout = (props: Props) => {
-  const { children } = props;
+  const { isSearchBarRequired = false, children } = props;
   const navigate = useNavigate();
   const navigateToHome = () => {
     navigate("/");
@@ -23,13 +25,16 @@ const CustomLayout = (props: Props) => {
         <div className="logo-image">
           <CustomImage
             source={Logo}
-            width="60"
+            width="50"
             onClickHandler={navigateToHome}
           />
         </div>
         <div className="pi pi-user login-btn">Login</div>
       </div>
-      {children}
+      <div className="layout-body">
+        {isSearchBarRequired && <HotelSearchBar />}
+        {children}
+      </div>
       <FooterDetails />
     </div>
   );

@@ -1,12 +1,12 @@
 .custom-layout {
-  background: #fffce5;
   .custom-layout-header {
     display: flex;
     justify-content: space-between;
     font-family: "Courier New", Courier, monospace;
     align-items: center;
-    padding: 0.5rem 2rem;
+    padding: 0.1rem 2rem;
     background: #e1d89f;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     .close-btn {
       font-size: 1.3rem;
       cursor: pointer;
@@ -27,14 +27,28 @@
       margin-right: 10px;
     }
   }
-  .p-steps {
-    margin: 2rem 0;
-    ol {
-      li a {
-        background: transparent;
+  .layout-body {
+    .p-steps {
+      margin: 2rem 0;
+      ol {
+        li a {
+          background: transparent;
+        }
+        li::before {
+          border-top: 1px solid #06b6d4;
+        }
       }
-      li::before {
-        border-top: 1px solid #06b6d4;
+    }
+    .hotel-search-bar {
+      position: relative;
+      transform: none;
+      justify-content: center;
+      left: 0;
+      border-radius: 0;
+      background: linear-gradient(to bottom, transparent 0%, #f2e795 10%);
+      .custom-card {
+        top: 5rem;
+        bottom: auto;
       }
     }
   }

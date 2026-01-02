@@ -4,27 +4,41 @@ import CustomButton from "./CustomButton";
 import CustomOverlayPanel, { ChildRef } from "./CustomOverlayPanel";
 import IconLabel from "./IconLabel";
 
+type RoomsGuests = {
+  rooms: number;
+  adults: number;
+  children: number;
+};
+
 type Props = {
   label: string;
+  value: RoomsGuests;
+  onChange: (value: RoomsGuests) => void;
 };
 
 const CustomRoomsGuestsSelection = (props: Props) => {
-  const { label } = props;
-  const [roomCount, setRoomCount] = useState<number>(1);
-  const [guestCount, setGuestCount] = useState<number>(2);
+  const { label, value, onChange } = props;
   const childRef = useRef<ChildRef>(null);
-  const handleCallChild = () => {
+
+  const handleApply = () => {
+    onChange(value);
     childRef.current?.childMethod();
   };
+
   const setRoomCountHandler = (count: number) => {
-    console.log("room-count", count);
-    setRoomCount(count);
+    onChange({
+      ...value,
+      rooms: count,
+    });
   };
+
   const setGuestCountHandler = (count: number) => {
-    console.log("guest-count", count);
-    setGuestCount(count);
+    onChange({
+      ...value,
+      adults: count,
+    });
   };
-  // console.log("counttttt",roomCount,guestCount)
+
   return (
     <div
       className="card flex"
@@ -32,6 +46,7 @@ const CustomRoomsGuestsSelection = (props: Props) => {
     >
       <div className="label">{label}</div>
       <CustomOverlayPanel
+        ref={childRef}
         selectedViewChildren={
           <div
             style={{
@@ -40,34 +55,34 @@ const CustomRoomsGuestsSelection = (props: Props) => {
               justifyContent: "space-between",
               padding: "12px 12px 12px 0",
               cursor: "pointer",
+              alignItems: "center",
             }}
           >
             <IconLabel fontSize={20} classname="pi-building" />
             <div style={{ fontSize: "18px", opacity: "0.6" }}>
               <span style={{ fontSize: "25px" }}>
-                {roomCount < 10 ? "0" : ""}
-                {roomCount}
+                {value.rooms < 10 ? "0" : ""}
+                {value.rooms}
               </span>
               Room
-              {`${roomCount > 1 ? "s" : ""}`}
+              {`${value.rooms > 1 ? "s" : ""}`}
               &nbsp;
               <span style={{ fontSize: "25px" }}>
-                {guestCount < 10 ? "0" : ""}
-                {guestCount}
+                {value.adults < 10 ? "0" : ""}
+                {value.adults}
               </span>
               Guest
-              {`${guestCount > 1 ? "s" : ""}`}
+              {`${value.adults > 1 ? "s" : ""}`}
             </div>
             <IconLabel fontSize={20} classname="pi-angle-down" />
           </div>
         }
-        ref={childRef}
       >
         <div className="room-count">
           <div>No. of Rooms</div>
           <CustomCounter
             minCount={1}
-            defaultCount={roomCount}
+            defaultCount={value.rooms}
             setCountHandler={setRoomCountHandler}
           />
         </div>
@@ -75,14 +90,14 @@ const CustomRoomsGuestsSelection = (props: Props) => {
           <div>No. of Guests</div>
           <CustomCounter
             minCount={2}
-            defaultCount={guestCount}
+            defaultCount={value.adults}
             setCountHandler={setGuestCountHandler}
           />
         </div>
         <CustomButton
           label="Apply"
           classname="apply-btn"
-          onClick={handleCallChild}
+          onClick={handleApply}
         />
       </CustomOverlayPanel>
     </div>

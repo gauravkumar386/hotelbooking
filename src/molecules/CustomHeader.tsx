@@ -56,7 +56,7 @@ const CustomHeader = () => {
       <div className="header-top">
         <div className="logo-name">Villa Verona</div>
         <div className="logo-image">
-          <CustomImage source={Logo} width="60" />
+          <CustomImage source={Logo} width="50" />
         </div>
         <div className="header-top-right">
           <IconLabel

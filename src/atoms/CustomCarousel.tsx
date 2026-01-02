@@ -1,10 +1,12 @@
 import { Carousel } from "primereact/carousel";
 import { useEffect, useState } from "react";
 
-type Props = {};
+type Props = {
+  carouselDataTemplate: (product:any) => void;
+};
 
 const CustomCarousel = (props: Props) => {
-  const {} = props;
+  const {carouselDataTemplate} = props;
   const [carouselData, setCarouselData] = useState<any>([]);
   const responsiveOptions = [
     {
@@ -29,13 +31,13 @@ const CustomCarousel = (props: Props) => {
     },
   ];
 
-  useEffect(() => {
-    setCarouselData(carouselData.slice(0, 9));
-  }, [carouselData]);
+  // useEffect(() => {
+  //   setCarouselData(carouselData.slice(0, 9));
+  // }, [carouselData]);
 
-  const carouselDataTemplate = (carouselData: any) => {
-    return <div>Product</div>;
-  };
+  // const carouselDataTemplate = (carouselData: any) => {
+  //   return <div>Product</div>;
+  // };
 
   return (
     <div className="card">
@@ -44,7 +46,7 @@ const CustomCarousel = (props: Props) => {
         numScroll={1}
         numVisible={3}
         responsiveOptions={responsiveOptions}
-        itemTemplate={carouselDataTemplate}
+        // itemTemplate={carouselDataTemplate}
       />
     </div>
   );

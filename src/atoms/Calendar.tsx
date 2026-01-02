@@ -9,11 +9,11 @@ type Props = {
   disabled?: boolean;
   minDate?: Date;
   maxDate?: Date;
-  minMonth?: number;
-  maxMonth?: number;
   label: string;
   classname: string;
   showTime?: boolean;
+  value: Date | null;
+  onChange: (date: Date | null) => void;
 };
 
 const CustomCalendar = (props: Props) => {
@@ -23,13 +23,12 @@ const CustomCalendar = (props: Props) => {
     disabled,
     minDate,
     maxDate,
-    minMonth,
-    maxMonth,
     label,
     classname,
     showTime,
+    value,
+    onChange,
   } = props;
-  const [date, setDate] = useState<Date | null>(null);
 
   return (
     <div
@@ -38,11 +37,11 @@ const CustomCalendar = (props: Props) => {
     >
       <div className="label">{label}</div>
       <div style={{ display: "flex", alignItems: "center" }}>
-        <IconLabel classname={classname} />
+        <IconLabel classname={classname} style={{ marginRight: "0.5rem" }} />
         <FloatLabel>
           <Calendar
-            value={date}
-            onChange={(e) => setDate(e.value as Date)}
+            value={value}
+            onChange={(e) => onChange(e.value as Date | null)}
             dateFormat="dd/mm/yy"
             minDate={minDate}
             maxDate={maxDate}
@@ -51,8 +50,9 @@ const CustomCalendar = (props: Props) => {
             showWeek={showWeek}
             disabled={disabled}
             hourFormat="24"
+            inputId="calendar-input"
           />
-          {!date && <label htmlFor="date_range">dd/mm/yyyy</label>}
+          {!value && <label htmlFor="calendar-input">dd/mm/yyyy</label>}
         </FloatLabel>
       </div>
     </div>

@@ -1,0 +1,22 @@
+.hotel-card {
+  display: flex;
+  .hotel-card-details {
+    display: flex;
+    p {
+      margin-top: 0;
+    }
+    .hotel-details {
+      p:last-child {
+        margin: 0;
+      }
+    }
+  }
+  .price-details {
+    p {
+      margin-top: 0;
+    }
+    p:last-child {
+      margin: 0;
+    }
+  }
+}

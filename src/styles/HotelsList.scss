@@ -1,0 +1,28 @@
+.hotels-list-page {
+  display: flex;
+  margin: 2.5rem auto;
+  gap: 2.5rem;
+  max-width: 1440px;
+  
+  .p-card {
+    background-color: #f5efc8;
+    color: #000000;
+  }
+  .hotels-filters {
+    width: 25%;
+    .p-card {
+        .p-card-content {
+          padding: 0;
+        }
+      }
+  }
+  .hotels-list {
+    width: 75%;
+    .p-card {
+      margin-bottom: 1rem;
+      .p-card-content {
+        padding: 0;
+      }
+    }
+  }
+}

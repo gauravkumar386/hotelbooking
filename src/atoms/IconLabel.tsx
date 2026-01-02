@@ -4,6 +4,7 @@ type Props = {
   label?: string;
   classname: string;
   fontSize?: number;
+  style?: React.CSSProperties;
   onMouseOverHandler?: () => void;
   onMouseOutHandler?: () => void;
   onClickHandler?: () => void;
@@ -18,7 +19,8 @@ const IconLabel = (props: Props) => {
     onMouseOverHandler,
     onMouseOutHandler,
     onClickHandler,
-    fontSize = 15,
+    fontSize = 10,
+    style
   } = props;
   return (
     <span
@@ -29,6 +31,7 @@ const IconLabel = (props: Props) => {
         fontSize: `{${fontSize} px}`,
         cursor: "pointer",
         color: `${fontColor}`,
+        ...style
       }}
       tabIndex={0}
       onMouseOver={onMouseOverHandler}
